@@ -22,6 +22,7 @@ namespace dotnetmvc_LoginSystem.Models
         public string Account { get; set; }
 
         [DisplayName("密碼")]
+        [DataType(DataType.Password)]
         [Required]
         public string Password { get; set; }
 

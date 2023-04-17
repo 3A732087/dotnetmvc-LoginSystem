@@ -9,7 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -22,7 +22,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("首頁", "Index", "Home")</li>
-                    <li>@Html.ActionLink("註冊", "Register", "Home")</li>
+                    @if (Session["User"] == null)
+                    {
+                        <li>@Html.ActionLink("註冊", "Register", "Home")</li>
+                        <li>@Html.ActionLink("登入", "Login", "Home")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("登出", "Logout", "Home")</li>
+                        <li><a href="#">@Session["User"]</a></li>
+                    }
                 </ul>
             </div>
         </div>
